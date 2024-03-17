@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
-import { fetchData } from "../../components/services/api";
+import { fetchDataTrending } from "../../components/services/api";
 import MovieList from "../../components/MovieList /MovieList";
 
 export default function HomePage() {
@@ -14,8 +14,8 @@ export default function HomePage() {
         async function getData() {
             try {
                 setisLoading(true);
-                const data = await fetchData();
-                setMovies(data.results);
+                const data = await fetchDataTrending();
+                setMovies(data);
             } catch(error) {
                 setError(true);
             } finally {

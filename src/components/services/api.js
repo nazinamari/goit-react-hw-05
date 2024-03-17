@@ -8,16 +8,37 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.params = {
     language: "en-US",
     time_window: "day",
+    include_adult: false,
 }
 
-export const fetchData = async () => {
-    const url = 'trending/movie/day?';
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+
+export const fetchDataTrending = async () => {
+    const url = 'trending/movie/day';
+    const response = await axios.get(url);
+    return response.data.results;
+};
+
+export const getMovieById = async (movieId) => {
+    const url = `/movie/${movieId}?language=en-US`;
     const response = await axios.get(url);
     return response.data;
 };
 
-export const getMoviesSearch = async (searchFilm) => { 
-    const url = `/search/movie?query=${searchFilm}&include_adult=false&language=en-US&page=1`; 
+export const fetchCast = async (movieId) => {
+    const url = `/movie/${movieId}/credits?language=en-US`;
     const response = await axios.get(url);
-    return response.data.results;
+    return response.data.cast;
+};
+
+export const fetchReviews = async (movieId) => {
+    const url = `/movie/${movieId}/reviews`;
+    const response = await axios.get(url);
+    return response.data.results
+}
+
+export const getMoviesSearch = async (searchQuery) => { 
+    const url = `/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`; 
+    const response = await axios.get(url);
+    return response.data;
 };

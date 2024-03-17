@@ -1,0 +1,25 @@
+.review {
+    padding: 10px;
+    margin: 15px 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    max-width: 500px;
+}
+
+.reviewsWrap {
+    display: inline-flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.author {
+    font-weight: 600;
+}
+.rating {
+    font-style: italic;
+    color: aqua;
+}
+.content {
+    height: 100px;
+    overflow: auto;
+    scrollbar-width: thin;
+}

@@ -9,7 +9,7 @@ import { getMoviesSearch } from "../../components/services/api";
 export default function MoviesPage () {
 
     const [movies, setMovies] = useState([]);
-    const [isLoading, setisLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
 
     const [params] = useSearchParams();
@@ -18,13 +18,13 @@ export default function MoviesPage () {
     useEffect(() => {
         async function fetchData() {
             try {
-                setisLoading(true);
+                setIsLoading(true);
                 const data = await getMoviesSearch(searchFilm);
                 setMovies(data);
             } catch (error) {
                 setError(true)
             } finally {
-                setisLoading(false);
+                setIsLoading(false);
             }
         }
         fetchData()

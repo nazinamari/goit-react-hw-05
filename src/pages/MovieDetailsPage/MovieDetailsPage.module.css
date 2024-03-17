@@ -1,0 +1,20 @@
+.linkWrap {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.link {
+    display: block;
+    color: rgb(47, 108, 251);
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+.isActive {
+    text-decoration: underline;
+}
