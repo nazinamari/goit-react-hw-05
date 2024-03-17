@@ -7,7 +7,6 @@ axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 axios.defaults.params = {
     language: "en-US",
-    time_window: "day",
     include_adult: false,
 }
 

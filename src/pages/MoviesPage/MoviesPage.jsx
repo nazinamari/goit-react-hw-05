@@ -40,7 +40,7 @@ export default function MoviesPage () {
         return movies.filter((movie) =>
     movie.title.toLowerCase().includes(movieFilter.toLowerCase())
     );
-    },[movies, movieFilter])
+    },[movieFilter, movies])
 
     return (
         <div>
