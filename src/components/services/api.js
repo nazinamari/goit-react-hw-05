@@ -35,10 +35,10 @@ export const fetchReviews = async (movieId) => {
     const url = `/movie/${movieId}/reviews`;
     const response = await axios.get(url);
     return response.data.results
-}
+};
 
-export const getMoviesSearch = async (searchQuery) => { 
-    const url = `/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`; 
+export const getMoviesSearch = async (movieFilter) => {
+    const url = `/search/movie?query=${movieFilter}&include_adult=false&language=en-US&page=1`;
     const response = await axios.get(url);
-    return response.data;
+    return response.data.results;
 };

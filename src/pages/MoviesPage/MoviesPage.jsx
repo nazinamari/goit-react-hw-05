@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react"
-import { useSearchParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import MoviesFilter from "../../components/MoviesFilter/MoviesFilter";
 import MovieList from "../../components/MovieList /MovieList";
+// import { fetchDataTrending } from "../../components/services/api";
+import { useSearchParams } from "react-router-dom";
 import { getMoviesSearch } from "../../components/services/api";
 
 export default function MoviesPage () {
@@ -13,13 +14,13 @@ export default function MoviesPage () {
     const [error, setError] = useState(false);
 
     const [params] = useSearchParams();
-    const searchFilm = params.get('query') ?? '';
+    const movieFilter = params.get('query') ?? '';
 
     useEffect(() => {
-        async function fetchData() {
+        async function getData() {
             try {
                 setIsLoading(true);
-                const data = await getMoviesSearch(searchFilm);
+                const data = await getMoviesSearch(movieFilter);
                 setMovies(data);
             } catch (error) {
                 setError(true)
@@ -27,26 +28,28 @@ export default function MoviesPage () {
                 setIsLoading(false);
             }
         }
-        fetchData()
-    }, [searchFilm]);
+        getData()
+    }, [movieFilter]);
+
+    // const filteredMovies = movies.filter((movie) => 
+    // movie.title.toLowerCase().includes(movieFilter.toLowerCase())
+    // );
 
     const filteredMovies = useMemo(() => {
-        return movies.filter(movie => 
-            movie.title.toLowerCase().includes(searchFilm.toLowerCase()),
-        );
-    }, [searchFilm, movies]);
+        return movies.filter((movie) =>
+    movie.title.toLowerCase().includes(movieFilter.toLowerCase())
+    );
+    },[movies, movieFilter])
 
     return (
         <>
             {isLoading && <Loader />}
             {error && <ErrorMessage />}
             <MoviesFilter />
-            <div>
-                {filteredMovies.length > 0 && (
-                    <MovieList movies={filteredMovies}/>
-                )}
-                {!filteredMovies.length && <p>We dont have any movie for this term</p> }
-            </div>
+            <MovieList movies={filteredMovies}></MovieList>
+            {/* <div>
+                {filteredMovies.length > && ! isLoading && <MovieList movies={filteredMovies} />}
+            </div> */}
         </>
     );
 }

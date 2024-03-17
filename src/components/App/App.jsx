@@ -2,7 +2,7 @@ import Navigation from "../Navigation/Navigation";
 import { Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import HomePage from "../../pages/HomePage/HomePage.jsx";
-import MoviesPage from "../MoviesFilter/MoviesFilter.jsx";
+import MoviesPage from "../../pages/MoviesPage/MoviesPage.jsx";
 import MovieDetailsPage from "../../pages/MovieDetailsPage/MovieDetailsPage.jsx";
 import MovieCast from "../MovieCast/MovieCast.jsx";
 import MoviesReviews from "../MovieReviews/MovieReviews.jsx";
