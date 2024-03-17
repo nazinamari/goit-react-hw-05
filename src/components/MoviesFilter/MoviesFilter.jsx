@@ -16,7 +16,7 @@ export default function MoviesFilter() {
 
     const onChangeValue = e => {
         const { value } = e.target;
-        setSearchQuery(value)
+        setSearchQuery(value);
     };
 
     const handleSubmit = e => {

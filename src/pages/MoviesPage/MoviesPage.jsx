@@ -3,12 +3,10 @@ import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import MoviesFilter from "../../components/MoviesFilter/MoviesFilter";
 import MovieList from "../../components/MovieList /MovieList";
-// import { fetchDataTrending } from "../../components/services/api";
 import { useSearchParams } from "react-router-dom";
 import { getMoviesSearch } from "../../components/services/api";
 
 export default function MoviesPage () {
-
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -17,6 +15,9 @@ export default function MoviesPage () {
     const movieFilter = params.get('query') ?? '';
 
     useEffect(() => {
+        if( movieFilter === "") {
+            return;
+        }
         async function getData() {
             try {
                 setIsLoading(true);
@@ -42,14 +43,11 @@ export default function MoviesPage () {
     },[movies, movieFilter])
 
     return (
-        <>
+        <div>
             {isLoading && <Loader />}
             {error && <ErrorMessage />}
             <MoviesFilter />
-            <MovieList movies={filteredMovies}></MovieList>
-            {/* <div>
-                {filteredMovies.length > && ! isLoading && <MovieList movies={filteredMovies} />}
-            </div> */}
-        </>
+            {movies.length > 0 && <MovieList movies={filteredMovies}/>}
+        </div>
     );
 }
