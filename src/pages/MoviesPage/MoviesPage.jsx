@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import MoviesFilter from "../../components/MoviesFilter/MoviesFilter";
@@ -32,15 +32,9 @@ export default function MoviesPage () {
         getData()
     }, [movieFilter]);
 
-    // const filteredMovies = movies.filter((movie) => 
-    // movie.title.toLowerCase().includes(movieFilter.toLowerCase())
-    // );
-
-    const filteredMovies = useMemo(() => {
-        return movies.filter((movie) =>
+    const filteredMovies = movies.filter((movie) => 
     movie.title.toLowerCase().includes(movieFilter.toLowerCase())
     );
-    },[movieFilter, movies])
 
     return (
         <div>
