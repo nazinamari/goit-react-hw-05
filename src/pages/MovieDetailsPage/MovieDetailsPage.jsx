@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { IMAGE_URL, getMovieById } from "../../components/services/api";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -11,6 +11,9 @@ export default function MovieDetailsPage () {
     const [movie, setMovie] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    const location = useLocation();
+    const backLinkRef = useRef(location.state ?? '/payments')
 
     const getYear = () => new Date(movie.release_date).getFullYear();
 
@@ -34,6 +37,7 @@ export default function MovieDetailsPage () {
         <div>
             {isLoading && <Loader />}
             {error && <ErrorMessage />}
+            <Link to={backLinkRef.current}>Go Back</Link>
             {movie && (
                 <div>
                     <img 

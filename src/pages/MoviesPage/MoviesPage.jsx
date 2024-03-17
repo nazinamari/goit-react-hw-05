@@ -13,6 +13,7 @@ export default function MoviesPage () {
 
     const [params] = useSearchParams();
     const movieFilter = params.get('query') ?? '';
+    
 
     useEffect(() => {
         if( movieFilter === "") {
