@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { IMAGE_URL, getMovieById } from "../../components/services/api";
 import Loader from "../../components/Loader/Loader";
@@ -82,7 +82,9 @@ export default function MovieDetailsPage () {
                 </div>
             </ul>
             <hr></hr>
-            <Outlet/>
+            <Suspense fallback={null}>
+                <Outlet/>
+            </Suspense>
         </div>
     )
 }
