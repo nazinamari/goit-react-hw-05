@@ -20,13 +20,13 @@ export const fetchDataTrending = async () => {
 };
 
 export const getMovieById = async (movieId) => {
-    const url = `/movie/${movieId}?language=en-US`;
+    const url = `/movie/${movieId}`;
     const response = await axios.get(url);
     return response.data;
 };
 
 export const fetchCast = async (movieId) => {
-    const url = `/movie/${movieId}/credits?language=en-US`;
+    const url = `/movie/${movieId}/credits`;
     const response = await axios.get(url);
     return response.data.cast;
 };
@@ -38,7 +38,7 @@ export const fetchReviews = async (movieId) => {
 };
 
 export const getMoviesSearch = async (movieFilter) => {
-    const url = `/search/movie?query=${movieFilter}&include_adult=false&language=en-US&page=1`;
+    const url = `/search/movie?query=${movieFilter}`;
     const response = await axios.get(url);
     return response.data.results;
 };

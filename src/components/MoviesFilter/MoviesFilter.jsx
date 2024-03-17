@@ -10,6 +10,7 @@ export default function MoviesFilter() {
     const changeFilter = (newFilter) => {
         params.set('query', newFilter);
         setParams(params);
+        
     };
 
     const notify = () => toast.error('Please enter search term!');
