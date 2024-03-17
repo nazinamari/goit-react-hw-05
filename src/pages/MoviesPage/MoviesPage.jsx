@@ -42,11 +42,10 @@ export default function MoviesPage () {
             {error && <ErrorMessage />}
             <MoviesFilter />
             <div>
-                {filteredMovies.length > 0 ? (
+                {filteredMovies.length > 0 && (
                     <MovieList movies={filteredMovies}/>
-                ) : (
-                    <p>No information</p>
                 )}
+                {!filteredMovies.length && <p>We dont have any movie for this term</p> }
             </div>
         </>
     );

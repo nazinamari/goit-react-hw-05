@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { IMAGE_URL, getMovieById } from "../../components/services/api";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -60,20 +60,20 @@ export default function MovieDetailsPage () {
             <ul>
                 <div className={css.linkWrap}>
                     <li>
-                        <Link 
+                        <NavLink 
                             className={css.link}
                             to="cast"
                         >
                             Cast
-                        </Link>
+                        </NavLink>
                     </li>
                     <li>
-                    <Link 
+                        <NavLink 
                             className={css.link}
                             to="reviews"
                         >
                             Review
-                        </Link>
+                        </NavLink>
                     </li>
                 </div>
             </ul>
