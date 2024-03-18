@@ -1,6 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import { useState } from "react";
+import css from './MoviesFilter.module.css'
+import { AiOutlineSearch } from "react-icons/ai";
 
 export default function MoviesFilter() {
 
@@ -34,9 +36,10 @@ export default function MoviesFilter() {
     }
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className={css.form__wrap}>
+            <form onSubmit={handleSubmit} className={css.form}>
                 <input
+                    className={css.input}
                     type="text"
                     name="query"
                     value={searchQuery}
@@ -44,7 +47,8 @@ export default function MoviesFilter() {
                     placeholder="Enter movie titile..."
                 >
                 </input>
-                <button type="submit">
+                <button type="submit" className={css.button__search}>
+                    <AiOutlineSearch size="24px" />
                     Search
                 </button>
             </form>

@@ -19,7 +19,7 @@
     color: aqua;
 }
 .content {
-    height: 100px;
+    height: 300px;
     overflow: auto;
     scrollbar-width: thin;
 }

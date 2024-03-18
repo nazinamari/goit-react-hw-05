@@ -3,6 +3,7 @@ import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage"
 import { fetchDataTrending } from "../../components/services/api";
 import MovieList from "../../components/MovieList /MovieList";
+import css from "./HomePage.module.css"
 
 export default function HomePage() {
 
@@ -27,7 +28,7 @@ export default function HomePage() {
 
     return (
         <>
-            <h1>Trending today</h1>
+            <h1 className={css.title__home}>Trending today</h1>
             {isLoading && <Loader></Loader>}
             {error && <ErrorMessage/>}
             <div>

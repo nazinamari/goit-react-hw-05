@@ -4,6 +4,7 @@ import { IMAGE_URL, getMovieById } from "../../components/services/api";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import css from './MovieDetailsPage.module.css'
+import { MdArrowBackIos } from "react-icons/md";
 
 export default function MovieDetailsPage () {
 
@@ -37,31 +38,32 @@ export default function MovieDetailsPage () {
         <div>
             {isLoading && <Loader />}
             {error && <ErrorMessage />}
-            <Link to={backLinkRef.current}>Go Back</Link>
+            <Link to={backLinkRef.current} className={css.backLink}><MdArrowBackIos/>GO BACK</Link>
             {movie && (
-                <div>
-                    <img 
+                <div className={css.movieDetails__wrap}>
+                    <img
+                        className={css.poster}
                         src={`${IMAGE_URL}${movie.poster_path}`}
                         width="350px"
                         alt={movie.title}
                     />
-                    <h2>
+                    <h1>
                         {movie.title} ({getYear()})
-                    </h2>
+                    </h1>
                     <p>
                         User score: {Math.round(movie.vote_average * 10)}%
                     </p>
-                    <h3>Overview</h3>
+                    <h2>Overview</h2>
                     <p>{movie.overview}</p>
-                    <h3>Genres</h3>
+                    <h2>Genres</h2>
                     <div>
                         {movie.genres.map(el => el.name).join('')}
                     </div>
                 </div>
             )}
             <hr></hr>
-            <p>Additional Information</p>
-            <ul>
+            <h3 className={css.title__additional}>Additional Information</h3>
+            <ul className={css.list__additional}>
                 <div className={css.linkWrap}>
                     <li>
                         <NavLink 
