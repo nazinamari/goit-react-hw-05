@@ -15,6 +15,7 @@ export default function HomePage() {
         async function getData() {
             try {
                 setisLoading(true);
+                setError(false);
                 const data = await fetchDataTrending();
                 setMovies(data);
             } catch(error) {

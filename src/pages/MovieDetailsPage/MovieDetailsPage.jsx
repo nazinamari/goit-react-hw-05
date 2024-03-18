@@ -14,7 +14,7 @@ export default function MovieDetailsPage () {
     const [error, setError] = useState(false);
 
     const location = useLocation();
-    const backLinkRef = useRef(location.state ?? '/payments')
+    const backLinkRef = useRef(location.state ?? '/')
 
     const getYear = () => new Date(movie.release_date).getFullYear();
 
@@ -22,6 +22,7 @@ export default function MovieDetailsPage () {
         async function getData() {
             try {
                 setIsLoading(true);
+                setError(false);
                 const data = await getMovieById(movieId);
                 setMovie(data);
             } catch (error) {

@@ -22,6 +22,7 @@ export default function MoviesPage () {
         async function getData() {
             try {
                 setIsLoading(true);
+                setError(false);
                 const data = await getMoviesSearch(movieFilter);
                 setMovies(data);
             } catch (error) {
